@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useScroll } from 'framer-motion';
+import Lenis from 'lenis';
 import { products } from './data/products';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,16 +17,57 @@ import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
 import Spotlight from './components/Spotlight';
 import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
+import CartDrawer from './components/CartDrawer';
 import './App.css';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [lenisRef, setLenisRef] = useState(null);
   const currentProduct = products[currentIndex];
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.documentElement.style.setProperty('--product-gradient', currentProduct.gradient);
   }, [currentIndex, currentProduct]);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    
+    requestAnimationFrame(raf);
+    setLenisRef(lenis);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (lenisRef) {
+      if (loading) {
+        lenisRef.stop();
+      } else {
+        lenisRef.start();
+      }
+    }
+  }, [loading, lenisRef]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % products.length);
@@ -46,10 +88,21 @@ function App() {
 
   return (
     <div className="app-container" id="home">
+      
+      <AnimatePresence mode="wait">
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      <CartDrawer 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+        product={currentProduct} 
+        themeColor={currentProduct.themeColor} 
+      />
       <div className="noise-overlay" />
       <Spotlight />
       <RippleEffect />
-      <StickyCartBar product={currentProduct} />
+      <StickyCartBar product={currentProduct} onOpenCart={() => setIsCartOpen(true)} />
       <ScrollToTop color={currentProduct.themeColor} />
       <HeroIntro />
       <Navbar />
@@ -153,7 +206,7 @@ function App() {
                       <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
                     </div>
                     <Magnetic>
-                      <button onClick={triggerConfetti} className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
+                      <button onClick={() => setIsCartOpen(true)} className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
                         Order Now
                       </button>
                     </Magnetic>
