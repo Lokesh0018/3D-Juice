@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container" id="home">
       <div className="noise-overlay" />
       <Spotlight />
       <RippleEffect />
@@ -62,9 +62,11 @@ function App() {
           <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
           
           <ParallaxWrapper>
-            <BentoGrid product={currentProduct} />
+            <div id="flavors">
+              <BentoGrid product={currentProduct} />
+            </div>
 
-            <div className="content-sections">
+            <div className="content-sections" id="process">
               <section className="product-details section-container">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
@@ -117,7 +119,9 @@ function App() {
             </div>
           </ParallaxWrapper>
 
-          <FAQ />
+          <div id="faq">
+            <FAQ />
+          </div>
 
         </motion.main>
       </AnimatePresence>

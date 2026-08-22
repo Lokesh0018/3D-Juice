@@ -13,6 +13,10 @@
   cursor: auto;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--product-gradient);

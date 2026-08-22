@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import Magnetic from './Magnetic';
 import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +35,21 @@ const Navbar = () => {
           </svg>
           <span className="logo-text">Alphonso Mango</span>
         </div>
+        
+        <div className="nav-links">
+          <a href="#home" className="nav-link">Home</a>
+          <a href="#flavors" className="nav-link">Flavors</a>
+          <a href="#process" className="nav-link">Process</a>
+          <a href="#faq" className="nav-link">FAQ</a>
+        </div>
+
         <div className="nav-actions">
           <Magnetic>
             <button className="order-btn">Order Now</button>
           </Magnetic>
         </div>
       </div>
+      <motion.div className="scroll-progress-bar" style={{ scaleX }} />
     </nav>
   );
 };
