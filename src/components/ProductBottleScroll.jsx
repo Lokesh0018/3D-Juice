@@ -12,10 +12,7 @@ const ProductBottleScroll = ({ product }) => {
   });
 
   const totalFrames = 296;
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [1, totalFrames]);
-  
-  // Fade out the canvas at the very end of the scroll sequence so it doesn't linger
-  const canvasOpacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
+  const frameIndex = useTransform(scrollYProgress, [0, 1], [24, totalFrames]);
 
   useEffect(() => {
     // Preload images
@@ -68,7 +65,7 @@ const ProductBottleScroll = ({ product }) => {
       );
     };
 
-    renderFrame(0); // initial render
+    renderFrame(23); // initial render (frame 24)
 
     const unsubscribe = frameIndex.on("change", (latest) => {
       const index = Math.min(Math.floor(latest) - 1, totalFrames - 1);
@@ -80,7 +77,7 @@ const ProductBottleScroll = ({ product }) => {
 
   return (
     <div ref={containerRef} className="scroll-container">
-      <motion.div className="sticky-canvas-wrapper" style={{ opacity: canvasOpacity }}>
+      <motion.div className="sticky-canvas-wrapper">
         <canvas ref={canvasRef} className="bottle-canvas" />
       </motion.div>
     </div>

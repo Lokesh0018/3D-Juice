@@ -44,7 +44,7 @@ const BentoGrid = ({ product }) => {
                  hidden: { opacity: 0, scale: 0.9 },
                  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
                }}
-               style={{ padding: 0 }}
+               style={{ padding: 0, position: 'relative', overflow: 'hidden' }}
             >
                <video 
                  src="/assets/Mango_juice_swirling.mp4" 
@@ -53,6 +53,21 @@ const BentoGrid = ({ product }) => {
                  muted 
                  playsInline 
                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px' }}
+               />
+               <img 
+                 src="/assets/slice2.png" 
+                 alt="Mango Slice Out of Focus" 
+                 style={{
+                   position: 'absolute',
+                   bottom: '-30px',
+                   right: '-30px',
+                   width: '160px',
+                   height: 'auto',
+                   zIndex: 20,
+                   filter: 'blur(6px) drop-shadow(0 15px 15px rgba(0,0,0,0.6))',
+                   transform: 'rotate(-25deg) scale(1.1)',
+                   pointerEvents: 'none'
+                 }}
                />
             </motion.div>
         </Tilt>

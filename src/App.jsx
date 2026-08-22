@@ -42,7 +42,6 @@ function App() {
       <RippleEffect />
       <StickyCartBar product={currentProduct} />
       <ScrollToTop color={currentProduct.themeColor} />
-      <CustomCursor />
       <HeroIntro />
       <Navbar />
       
