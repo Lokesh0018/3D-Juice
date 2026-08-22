@@ -146,25 +146,7 @@ function App() {
             </div>
           </ParallaxWrapper>
 
-          <div className="testimonial-section section-container">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="testimonial-content"
-            >
-              <p className="testimonial-kicker">LOVED BY MANGO OBSESSED PEOPLE</p>
-              <div className="stars">★★★★★</div>
-              <h2 className="testimonial-quote">"It tastes like biting into a perfectly ripe Alphonso."</h2>
-              <div className="testimonial-metrics">
-                <span>10,000+ bottles enjoyed</span>
-                <span className="dot">•</span>
-                <span>100% natural</span>
-                <span className="dot">•</span>
-                <span>No added sugar</span>
-              </div>
-            </motion.div>
-          </div>
+
 
           <div id="faq">
             <FAQ />
