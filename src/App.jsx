@@ -14,6 +14,7 @@ import Magnetic from './components/Magnetic';
 import RippleEffect from './components/RippleEffect';
 import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
+import Spotlight from './components/Spotlight';
 import './App.css';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="noise-overlay" />
+      <Spotlight />
       <RippleEffect />
       <StickyCartBar product={currentProduct} />
       <CustomCursor />
