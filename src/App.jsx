@@ -108,44 +108,10 @@ function App() {
             </div>
           </ParallaxWrapper>
 
-          <div className="next-flavor-container">
-             <button onClick={handleNext} className="next-flavor-btn" style={{ background: currentProduct.themeColor }}>
-                <span>Next Flavor</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-             </button>
-          </div>
         </motion.main>
       </AnimatePresence>
 
       <Footer />
-
-      {/* Fixed Navigation Arrows & Menu */}
-      <div className="fixed-nav-arrows">
-         <Magnetic>
-           <button onClick={handlePrev} className="arrow-btn left">←</button>
-         </Magnetic>
-         <Magnetic>
-           <button onClick={handleNext} className="arrow-btn right">→</button>
-         </Magnetic>
-      </div>
-
-      <div className="fixed-bottom-menu">
-         <div className="pill-menu">
-            {products.map((p, idx) => (
-              <button 
-                key={p.id} 
-                onClick={() => setCurrentIndex(idx)}
-                className={`pill-btn ${idx === currentIndex ? 'active' : ''}`}
-                style={{ 
-                  backgroundColor: idx === currentIndex ? p.themeColor : 'rgba(255,255,255,0.1)',
-                  color: idx === currentIndex ? '#000' : '#fff'
-                }}
-              >
-                {p.name.split(' ')[1] || p.name}
-              </button>
-            ))}
-         </div>
-      </div>
     </div>
   );
 }
