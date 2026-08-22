@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useScroll } from 'framer-motion';
 import { products } from './data/products';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -8,10 +8,10 @@ import ProductTextOverlays from './components/ProductTextOverlays';
 import HeroIntro from './components/HeroIntro';
 import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
-
 import ParallaxWrapper from './components/ParallaxWrapper';
 import Magnetic from './components/Magnetic';
 import RippleEffect from './components/RippleEffect';
+import confetti from 'canvas-confetti';
 import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
 import Spotlight from './components/Spotlight';
@@ -35,6 +35,15 @@ function App() {
     setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
   };
 
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#f97316', '#ec4899', '#f59e0b']
+    });
+  };
+
   return (
     <div className="app-container" id="home">
       <div className="noise-overlay" />
@@ -51,14 +60,14 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="product-main"
+          transition={{ duration: 0.5 }}
         >
-          <div className="scroll-experience">
-            <ProductTextOverlays product={currentProduct} />
-            <ProductBottleScroll product={currentProduct} />
-          </div>
+        <div className="scroll-experience">
+          <ProductTextOverlays product={currentProduct} />
+          <ProductBottleScroll product={currentProduct} />
+        </div>
 
+        <div className="content-overlay">
           <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
           
           <div id="difference" className="alphonso-difference section-container">
@@ -72,19 +81,26 @@ function App() {
               <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
             </motion.div>
 
-            <div className="process-steps">
-              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-                <h3>01 &mdash; Handpicked</h3>
-                <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
-              </motion.div>
-              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
-                <h3>02 &mdash; Cold Pressed</h3>
-                <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
-              </motion.div>
-              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>
-                <h3>03 &mdash; Bottled Fresh</h3>
-                <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
-              </motion.div>
+            <div className="process-wrapper">
+              <div className="process-line-bg">
+                <motion.div 
+                  className="process-line-fill" 
+                />
+              </div>
+              <div className="process-steps">
+                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                  <h3>01 &mdash; Handpicked</h3>
+                  <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
+                </motion.div>
+                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                  <h3>02 &mdash; Cold Pressed</h3>
+                  <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
+                </motion.div>
+                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                  <h3>03 &mdash; Bottled Fresh</h3>
+                  <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
+                </motion.div>
+              </div>
             </div>
           </div>
 
@@ -137,7 +153,7 @@ function App() {
                       <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
                     </div>
                     <Magnetic>
-                      <button className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
+                      <button onClick={triggerConfetti} className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
                         Order Now
                       </button>
                     </Magnetic>
@@ -151,6 +167,7 @@ function App() {
           <div id="faq">
             <FAQ />
           </div>
+        </div>
 
         </motion.main>
       </AnimatePresence>

@@ -12,7 +12,7 @@ const ProductBottleScroll = ({ product }) => {
   });
 
   const totalFrames = 296;
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [24, totalFrames]);
+  const frameIndex = useTransform(scrollYProgress, [0, 1], [1, totalFrames]);
 
   useEffect(() => {
     // Preload images
@@ -65,7 +65,7 @@ const ProductBottleScroll = ({ product }) => {
       );
     };
 
-    renderFrame(23); // initial render (frame 24)
+    renderFrame(0); // initial render (frame 1)
 
     const unsubscribe = frameIndex.on("change", (latest) => {
       const index = Math.min(Math.floor(latest) - 1, totalFrames - 1);
