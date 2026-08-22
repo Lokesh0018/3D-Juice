@@ -26,7 +26,7 @@ const Navbar = () => {
                 </linearGradient>
              </defs>
           </svg>
-          <span className="logo-text">Nano Banana</span>
+          <span className="logo-text">Alphonso Mango</span>
         </div>
         <div className="nav-actions">
           <Magnetic>

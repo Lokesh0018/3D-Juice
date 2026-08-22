@@ -52,10 +52,8 @@ const CustomCursor = () => {
           backgroundColor: isHovering ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0)'
         }}
         transition={{
-          type: "spring",
-          stiffness: 800,
-          damping: 28,
-          mass: 0.1
+          type: "tween",
+          duration: 0
         }}
       />
       {/* Inner Dot */}

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-col brand-col">
           <div className="logo-area">
-             <span className="logo-text">Nano Banana</span>
+             <span className="logo-text">Alphonso Mango</span>
           </div>
           <p className="tagline">Future of Freshness</p>
         </div>
@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Nano Banana. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Alphonso Mango. All rights reserved.</p>
       </div>
     </footer>
   );
