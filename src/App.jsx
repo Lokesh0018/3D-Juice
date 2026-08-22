@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductBottleScroll from './components/ProductBottleScroll';
 import ProductTextOverlays from './components/ProductTextOverlays';
+import HeroIntro from './components/HeroIntro';
+import BentoGrid from './components/BentoGrid';
+import MarqueeText from './components/MarqueeText';
 import './App.css';
 
 function App() {
@@ -26,6 +29,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <HeroIntro />
       <Navbar />
       
       <AnimatePresence mode="wait">
@@ -41,6 +45,9 @@ function App() {
             <ProductTextOverlays product={currentProduct} />
             <ProductBottleScroll product={currentProduct} />
           </div>
+
+          <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
+          <BentoGrid product={currentProduct} />
 
           <div className="content-sections">
             <section className="product-details section-container">

@@ -1,0 +1,69 @@
+.hero-intro-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.hero-intro-container h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 4rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scroll-indicator p {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.mouse-icon {
+  width: 30px;
+  height: 45px;
+  border: 2px solid white;
+  border-radius: 15px;
+  position: relative;
+  opacity: 0.8;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .hero-intro-container h1 {
+    font-size: 3rem;
+  }
+}
