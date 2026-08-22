@@ -36,6 +36,27 @@ const BentoGrid = ({ product }) => {
           </motion.div>
         </Tilt>
 
+        {/* Video Card */}
+        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500}>
+            <motion.div 
+               className="bento-card feature-video"
+               variants={{
+                 hidden: { opacity: 0, scale: 0.9 },
+                 visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+               }}
+               style={{ padding: 0 }}
+            >
+               <video 
+                 src="/assets/Mango_juice_swirling.mp4" 
+                 autoPlay 
+                 loop 
+                 muted 
+                 playsInline 
+                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '24px' }}
+               />
+            </motion.div>
+        </Tilt>
+
         {/* Stat Cards */}
         {product.stats.map((stat, i) => (
           <Tilt key={i} tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2500}>
@@ -47,7 +68,7 @@ const BentoGrid = ({ product }) => {
                }}
             >
                <h4>{stat.label}</h4>
-               <p className="stat-val" style={{ color: product.themeColor }}>{stat.val}</p>
+               <p className="stat-val" style={{ color: '#fff', textShadow: `0 0 10px ${product.themeColor}, 0 2px 4px rgba(0,0,0,0.5)` }}>{stat.val}</p>
             </motion.div>
           </Tilt>
         ))}

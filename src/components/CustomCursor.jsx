@@ -53,9 +53,9 @@ const CustomCursor = () => {
         }}
         transition={{
           type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.5
+          stiffness: 800,
+          damping: 28,
+          mass: 0.1
         }}
       />
       {/* Inner Dot */}

@@ -1,23 +1,18 @@
 import React from 'react';
-import { motion, useScroll, useVelocity, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './ProductTextOverlays.css';
 
 const ProductTextOverlays = ({ product }) => {
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
-  const skewVelocity = useTransform(smoothVelocity, [-1000, 1000], [-5, 5]);
-
-  // Helper to split text into animated words
+  // Helper to split text into elegantly animated words
   const SplitText = ({ text, outlineIndex }) => {
     return text.split(' ').map((word, idx) => (
       <motion.span 
         key={idx}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: idx * 0.1 }}
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
         className={idx === outlineIndex ? 'text-outline' : ''}
-        style={{ display: "inline-block", skewY: skewVelocity }}
+        style={{ display: "inline-block", marginRight: "12px" }}
       >
         {word}
       </motion.span>

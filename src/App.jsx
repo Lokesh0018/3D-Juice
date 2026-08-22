@@ -15,6 +15,7 @@ import RippleEffect from './components/RippleEffect';
 import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
 import Spotlight from './components/Spotlight';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       <Spotlight />
       <RippleEffect />
       <StickyCartBar product={currentProduct} />
+      <ScrollToTop color={currentProduct.themeColor} />
       <CustomCursor />
       <HeroIntro />
       <Navbar />
