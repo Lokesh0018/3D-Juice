@@ -22,7 +22,7 @@ const HeroIntro = () => {
 
 
 
-  const words = ["Pure.", "Premium.", "Pressed."];
+  const words = ["Pure.", "Premium.", "Precise."];
 
   const triggerConfetti = () => {
     confetti({

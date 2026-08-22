@@ -75,7 +75,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-block text-center"
+              className="text-block"
             >
               <h2 className="section-heading">The Alphonso Difference</h2>
               <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
