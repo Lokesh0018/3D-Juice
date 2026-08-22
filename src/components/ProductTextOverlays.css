@@ -23,6 +23,15 @@
   margin-bottom: 1rem;
   line-height: 1.1;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  text-shadow: none;
 }
 
 .overlay-section p {

@@ -30,7 +30,9 @@ const HeroIntro = () => {
           <motion.h1 
              initial={{ y: 50, opacity: 0 }}
              animate={{ y: 0, opacity: 1 }}
-             transition={{ duration: 1, delay: 0.2 }}
+             whileHover={{ scale: 1.05, skewX: -5, skewY: 2, letterSpacing: "5px" }}
+             transition={{ duration: 0.8, type: "spring", stiffness: 200 }}
+             style={{ cursor: "none" }}
           >
              Pure. Premium. Pressed.
           </motion.h1>

@@ -3,6 +3,22 @@ import { motion } from 'framer-motion';
 import './ProductTextOverlays.css';
 
 const ProductTextOverlays = ({ product }) => {
+  
+  // Helper to split text into animated words
+  const SplitText = ({ text, outlineIndex }) => {
+    return text.split(' ').map((word, idx) => (
+      <motion.span 
+        key={idx}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: idx * 0.1 }}
+        className={idx === outlineIndex ? 'text-outline' : ''}
+      >
+        {word}
+      </motion.span>
+    ));
+  };
+
   return (
     <div className="text-overlays-container">
        <motion.div 
@@ -13,7 +29,7 @@ const ProductTextOverlays = ({ product }) => {
          viewport={{ margin: "-20% 0px -20% 0px" }}
          transition={{ duration: 0.8 }}
        >
-          <h1>{product.section1.title}</h1>
+          <h1><SplitText text={product.section1.title} outlineIndex={1} /></h1>
           <p>{product.section1.subtitle}</p>
        </motion.div>
 
@@ -25,7 +41,7 @@ const ProductTextOverlays = ({ product }) => {
          viewport={{ margin: "-20% 0px -20% 0px" }}
          transition={{ duration: 0.8 }}
        >
-          <h1>{product.section2.title}</h1>
+          <h1><SplitText text={product.section2.title} outlineIndex={2} /></h1>
           <p>{product.section2.subtitle}</p>
        </motion.div>
 
@@ -37,7 +53,7 @@ const ProductTextOverlays = ({ product }) => {
          viewport={{ margin: "-20% 0px -20% 0px" }}
          transition={{ duration: 0.8 }}
        >
-          <h1>{product.section3.title}</h1>
+          <h1><SplitText text={product.section3.title} outlineIndex={1} /></h1>
           <p>{product.section3.subtitle}</p>
        </motion.div>
 
@@ -49,7 +65,7 @@ const ProductTextOverlays = ({ product }) => {
          viewport={{ margin: "-20% 0px -20% 0px" }}
          transition={{ duration: 0.8 }}
        >
-          <h1>{product.section4.title}</h1>
+          <h1><SplitText text={product.section4.title} outlineIndex={3} /></h1>
           <p>{product.section4.subtitle}</p>
        </motion.div>
     </div>

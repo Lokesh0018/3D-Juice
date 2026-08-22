@@ -11,6 +11,9 @@ import MarqueeText from './components/MarqueeText';
 import CustomCursor from './components/CustomCursor';
 import ParallaxWrapper from './components/ParallaxWrapper';
 import Magnetic from './components/Magnetic';
+import RippleEffect from './components/RippleEffect';
+import FAQ from './components/FAQ';
+import StickyCartBar from './components/StickyCartBar';
 import './App.css';
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
 
   return (
     <div className="app-container">
+      <div className="noise-overlay" />
+      <RippleEffect />
+      <StickyCartBar product={currentProduct} />
       <CustomCursor />
       <HeroIntro />
       <Navbar />
@@ -107,6 +113,8 @@ function App() {
               </section>
             </div>
           </ParallaxWrapper>
+
+          <FAQ />
 
         </motion.main>
       </AnimatePresence>
