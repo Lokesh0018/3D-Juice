@@ -11,7 +11,7 @@ const ProductBottleScroll = ({ product }) => {
     offset: ["start start", "end end"]
   });
 
-  const totalFrames = 237;
+  const totalFrames = 296;
   const frameIndex = useTransform(scrollYProgress, [0, 1], [1, totalFrames]);
   
   // Fade out the canvas at the very end of the scroll sequence so it doesn't linger
@@ -25,7 +25,7 @@ const ProductBottleScroll = ({ product }) => {
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       const paddedNum = i.toString().padStart(3, '0');
-      img.src = `/assets/ezgif-4327e1405c36c5a3-jpg/ezgif-frame-${paddedNum}.jpg`;
+      img.src = `/assets/ezgif-1953cb71ee1524d4-jpg/ezgif-frame-${paddedNum}.jpg`;
       img.onload = () => {
         loadedCount++;
         if (loadedCount === totalFrames) {
