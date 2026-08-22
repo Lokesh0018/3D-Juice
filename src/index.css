@@ -15,10 +15,18 @@
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--product-gradient);
+  background-size: 200% 200%;
+  animation: fluidBg 15s ease infinite;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   transition: background 0.8s ease;
+}
+
+@keyframes fluidBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Custom Selection */

@@ -8,6 +8,9 @@ import ProductTextOverlays from './components/ProductTextOverlays';
 import HeroIntro from './components/HeroIntro';
 import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
+import CustomCursor from './components/CustomCursor';
+import ParallaxWrapper from './components/ParallaxWrapper';
+import Magnetic from './components/Magnetic';
 import './App.css';
 
 function App() {
@@ -29,6 +32,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <CustomCursor />
       <HeroIntro />
       <Navbar />
       
@@ -47,57 +51,62 @@ function App() {
           </div>
 
           <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
-          <BentoGrid product={currentProduct} />
+          
+          <ParallaxWrapper>
+            <BentoGrid product={currentProduct} />
 
-          <div className="content-sections">
-            <section className="product-details section-container">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className="text-block"
-              >
-                  <h2>{currentProduct.detailsSection.title}</h2>
-                  <p>{currentProduct.detailsSection.description}</p>
-              </motion.div>
-            </section>
+            <div className="content-sections">
+              <section className="product-details section-container">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                  className="text-block"
+                >
+                    <h2>{currentProduct.detailsSection.title}</h2>
+                    <p>{currentProduct.detailsSection.description}</p>
+                </motion.div>
+              </section>
 
-            <section className="product-freshness section-container">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className="text-block"
-              >
-                <h2>{currentProduct.freshnessSection.title}</h2>
-                <p>{currentProduct.freshnessSection.description}</p>
-              </motion.div>
-            </section>
+              <section className="product-freshness section-container">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                  className="text-block"
+                >
+                  <h2>{currentProduct.freshnessSection.title}</h2>
+                  <p>{currentProduct.freshnessSection.description}</p>
+                </motion.div>
+              </section>
 
-            <section className="buy-now-section section-container">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6 }}
-                className="buy-card"
-              >
-                  <div className="buy-info">
-                    <h2>{currentProduct.name}</h2>
-                    <p className="price-tag">{currentProduct.buyNowSection.price} <span>{currentProduct.buyNowSection.unit}</span></p>
-                    <ul className="params-list">
-                      {currentProduct.buyNowSection.processingParams.map(p => <li key={p}>{p}</li>)}
-                    </ul>
-                    <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
-                  </div>
-                  <button className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
-                    Order Now
-                  </button>
-              </motion.div>
-            </section>
-          </div>
+              <section className="buy-now-section section-container">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6 }}
+                  className="buy-card"
+                >
+                    <div className="buy-info">
+                      <h2>{currentProduct.name}</h2>
+                      <p className="price-tag">{currentProduct.buyNowSection.price} <span>{currentProduct.buyNowSection.unit}</span></p>
+                      <ul className="params-list">
+                        {currentProduct.buyNowSection.processingParams.map(p => <li key={p}>{p}</li>)}
+                      </ul>
+                      <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
+                    </div>
+                    <Magnetic>
+                      <button className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
+                        Order Now
+                      </button>
+                    </Magnetic>
+                </motion.div>
+              </section>
+            </div>
+          </ParallaxWrapper>
 
           <div className="next-flavor-container">
              <button onClick={handleNext} className="next-flavor-btn" style={{ background: currentProduct.themeColor }}>
@@ -112,8 +121,12 @@ function App() {
 
       {/* Fixed Navigation Arrows & Menu */}
       <div className="fixed-nav-arrows">
-         <button onClick={handlePrev} className="arrow-btn left">←</button>
-         <button onClick={handleNext} className="arrow-btn right">→</button>
+         <Magnetic>
+           <button onClick={handlePrev} className="arrow-btn left">←</button>
+         </Magnetic>
+         <Magnetic>
+           <button onClick={handleNext} className="arrow-btn right">→</button>
+         </Magnetic>
       </div>
 
       <div className="fixed-bottom-menu">

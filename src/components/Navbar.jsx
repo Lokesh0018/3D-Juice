@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Magnetic from './Magnetic';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -28,7 +29,9 @@ const Navbar = () => {
           <span className="logo-text">Nano Banana</span>
         </div>
         <div className="nav-actions">
-          <button className="order-btn">Order Now</button>
+          <Magnetic>
+            <button className="order-btn">Order Now</button>
+          </Magnetic>
         </div>
       </div>
     </nav>
