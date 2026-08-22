@@ -10,7 +10,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: auto;
+}
+
+a, button {
+  cursor: pointer;
 }
 
 html {
@@ -24,8 +27,9 @@ body {
   background-size: 200% 200%;
   animation: fluidBg 15s ease infinite;
   color: var(--text-primary);
-  min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
   transition: background 0.8s ease;
 }
 

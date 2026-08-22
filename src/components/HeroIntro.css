@@ -41,12 +41,12 @@
 }
 
 .kinetic-heading {
-  font-size: 5rem;
+  font-size: 4.2rem;
   font-weight: 900;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   display: flex;
   gap: 1rem;
 }
@@ -54,7 +54,7 @@
 .word-mask {
   display: inline-block;
   overflow: hidden;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .gradient-text-liquid {
@@ -72,33 +72,57 @@
   100% { background-position: 0% 50%; }
 }
 
-.hero-cta-btn {
-  background: linear-gradient(135deg, #f97316, #ec4899);
-  color: white;
-  border: none;
-  padding: 1rem 3rem;
-  border-radius: 9999px;
-  font-size: 1.25rem;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
-  transition: all 0.3s;
-}
-
-.hero-cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(249, 115, 22, 0.6);
-  filter: brightness(1.1);
-}
-
 .hero-subtitle {
   font-size: 1.5rem;
-  color: white;
-  margin-bottom: 2rem;
+  color: #FDFBF7;
+  margin-bottom: 3rem;
   font-weight: 500;
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
   letter-spacing: 0.05em;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 10;
+}
+
+.hero-cta-primary {
+  background: #FDFBF7;
+  color: #2A1305;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  background: #ffffff;
+}
+
+.hero-cta-secondary {
+  background: transparent;
+  color: #FDFBF7;
+  border: 1px solid rgba(253, 251, 247, 0.4);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(253, 251, 247, 0.1);
+  border-color: #FDFBF7;
 }
 
 .hero-social-proof {
@@ -106,16 +130,17 @@
   gap: 1rem;
 }
 
-.glass-pill {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.5rem 1.5rem;
+.premium-badge {
+  background: rgba(42, 19, 5, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(253, 251, 247, 0.15);
+  padding: 0.4rem 1.2rem;
   border-radius: 9999px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  color: #FDFBF7;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .glowing-scroll-line {

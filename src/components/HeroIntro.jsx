@@ -97,26 +97,29 @@ const HeroIntro = () => {
           Experience the world's most vibrant Alphonso mango juice.
         </motion.p>
 
+        <motion.div
+           className="hero-cta-group"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8, delay: 1.0 }}
+        >
+          <Magnetic>
+            <button className="hero-cta-primary">Shop Mango Juice &rarr;</button>
+          </Magnetic>
+          <Magnetic>
+            <button className="hero-cta-secondary">Explore Flavors</button>
+          </Magnetic>
+        </motion.div>
+
         <motion.div 
            className="hero-social-proof"
            initial={{ opacity: 0, scale: 0.9 }}
            animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.8, delay: 1.0 }}
-        >
-           <span className="glass-pill">✨ 100% Organic</span>
-           <span className="glass-pill">🌱 No Added Sugar</span>
-           <span className="glass-pill">🥭 Cold-Pressed</span>
-        </motion.div>
-
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, delay: 1.2 }}
-           style={{ marginTop: '3rem' }}
         >
-          <Magnetic>
-            <button className="hero-cta-btn">Shop Now</button>
-          </Magnetic>
+           <span className="premium-badge">✦ 100% Organic</span>
+           <span className="premium-badge">🌱 No Added Sugar</span>
+           <span className="premium-badge">🥭 Cold-Pressed</span>
         </motion.div>
       </div>
 

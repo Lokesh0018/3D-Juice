@@ -8,7 +8,7 @@ import ProductTextOverlays from './components/ProductTextOverlays';
 import HeroIntro from './components/HeroIntro';
 import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
-import CustomCursor from './components/CustomCursor';
+
 import ParallaxWrapper from './components/ParallaxWrapper';
 import Magnetic from './components/Magnetic';
 import RippleEffect from './components/RippleEffect';
@@ -61,6 +61,33 @@ function App() {
 
           <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
           
+          <div id="difference" className="alphonso-difference section-container">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-block text-center"
+            >
+              <h2 className="section-heading">The Alphonso Difference</h2>
+              <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
+            </motion.div>
+
+            <div className="process-steps">
+              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <h3>01 &mdash; Handpicked</h3>
+                <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
+              </motion.div>
+              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+                <h3>02 &mdash; Cold Pressed</h3>
+                <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
+              </motion.div>
+              <motion.div className="step-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>
+                <h3>03 &mdash; Bottled Fresh</h3>
+                <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
+              </motion.div>
+            </div>
+          </div>
+
           <ParallaxWrapper>
             <div id="flavors">
               <BentoGrid product={currentProduct} />
@@ -118,6 +145,26 @@ function App() {
               </section>
             </div>
           </ParallaxWrapper>
+
+          <div className="testimonial-section section-container">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="testimonial-content"
+            >
+              <p className="testimonial-kicker">LOVED BY MANGO OBSESSED PEOPLE</p>
+              <div className="stars">★★★★★</div>
+              <h2 className="testimonial-quote">"It tastes like biting into a perfectly ripe Alphonso."</h2>
+              <div className="testimonial-metrics">
+                <span>10,000+ bottles enjoyed</span>
+                <span className="dot">•</span>
+                <span>100% natural</span>
+                <span className="dot">•</span>
+                <span>No added sugar</span>
+              </div>
+            </motion.div>
+          </div>
 
           <div id="faq">
             <FAQ />
