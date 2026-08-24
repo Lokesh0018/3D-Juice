@@ -16,14 +16,17 @@ const WhySpecial = () => {
   // Container 01 (Sugar): enters LEFT, stays LEFT, exits LEFT
   const f1X = useTransform(scrollYProgress, [0.0, 0.15, 0.3, 0.4], ['-100vw', '0vw', '0vw', '-100vw']);
   const f1Opacity = useTransform(scrollYProgress, [0.0, 0.15, 0.3, 0.4], [0, 1, 1, 0]);
+  const f1Scale = useTransform(scrollYProgress, [0.0, 0.15, 0.3, 0.4], [0.85, 1, 1, 0.85]);
 
   // Container 02 (Pulp): enters RIGHT, stays RIGHT, exits RIGHT
   const f2X = useTransform(scrollYProgress, [0.3, 0.45, 0.6, 0.7], ['100vw', '0vw', '0vw', '100vw']);
   const f2Opacity = useTransform(scrollYProgress, [0.3, 0.45, 0.6, 0.7], [0, 1, 1, 0]);
+  const f2Scale = useTransform(scrollYProgress, [0.3, 0.45, 0.6, 0.7], [0.85, 1, 1, 0.85]);
 
   // Container 03 (Water): enters LEFT, stays LEFT, exits LEFT
   const f3X = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1.0], ['-100vw', '0vw', '0vw', '-100vw']);
   const f3Opacity = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1.0], [0, 1, 1, 0]);
+  const f3Scale = useTransform(scrollYProgress, [0.6, 0.75, 0.9, 1.0], [0.85, 1, 1, 0.85]);
 
   return (
     <div ref={containerRef} className="special-container" id="why-special">
@@ -38,18 +41,21 @@ const WhySpecial = () => {
         </motion.div>
 
         <motion.div className="special-feature feature-left" style={{ x: f1X, opacity: f1Opacity }}>
+          <div className="glow-orb" />
           <h3>Sugar</h3>
-          <h4>0g</h4>
+          <motion.h4 style={{ scale: f1Scale }}>0g</motion.h4>
         </motion.div>
 
         <motion.div className="special-feature feature-right" style={{ x: f2X, opacity: f2Opacity }}>
+          <div className="glow-orb" />
           <h3>Pulp</h3>
-          <h4>100%</h4>
+          <motion.h4 style={{ scale: f2Scale }}>100%</motion.h4>
         </motion.div>
 
         <motion.div className="special-feature feature-left" style={{ x: f3X, opacity: f3Opacity }}>
+          <div className="glow-orb" />
           <h3>Water</h3>
-          <h4>0%</h4>
+          <motion.h4 style={{ scale: f3Scale }}>0%</motion.h4>
         </motion.div>
       </div>
     </div>
