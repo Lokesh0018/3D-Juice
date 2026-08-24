@@ -21,6 +21,11 @@
 .orchard-content .text-block {
   max-width: 450px;
   text-align: left;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 .orchard-grid {
@@ -31,24 +36,48 @@
 }
 
 .orchard-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.02);
   padding: 3.5rem;
   border-radius: 24px;
   text-align: center;
-  transition: transform 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .orchard-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-12px) scale(1.02);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(245, 166, 35, 0.1), inset 0 0 30px rgba(255,255,255,0.05);
 }
 
-.orchard-icon {
-  font-size: 4.5rem;
+.orchard-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
   margin-bottom: 1.5rem;
-  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 0.5s ease;
+}
+
+.orchard-card:hover .orchard-image {
+  transform: scale(1.03);
+}
+
+.volcanic-image {
+  /* Using a dark, moody volcanic soil/rock image */
+  background-image: url('https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?q=80&w=800&auto=format&fit=crop');
+}
+
+.coastal-image {
+  /* Using a tropical coastal rain/ocean image */
+  background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=800&auto=format&fit=crop');
 }
 
 .orchard-card h3 {
