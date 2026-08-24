@@ -7,7 +7,6 @@ const ProcessPage = React.lazy(() => import('./pages/ProcessPage'));
 const QualityPage = React.lazy(() => import('./pages/QualityPage'));
 const TraceabilityPage = React.lazy(() => import('./pages/TraceabilityPage'));
 const ProductPage = React.lazy(() => import('./pages/ProductPage'));
-const StoryPage = React.lazy(() => import('./pages/StoryPage'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
 
 import './App.css';
@@ -29,7 +28,6 @@ function App() {
         <Route path="/quality" element={<QualityPage />} />
         <Route path="/traceability" element={<TraceabilityPage />} />
         <Route path="/product" element={<ProductPage />} />
-        <Route path="/story" element={<StoryPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Suspense>

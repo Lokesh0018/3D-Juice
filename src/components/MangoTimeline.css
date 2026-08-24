@@ -1,19 +1,16 @@
 .timeline-container {
-  height: 500vh; /* Adds 5 full screens of scrolling */
   position: relative;
-  background: rgba(0,0,0,0.4);
+  background: transparent;
+  padding: 4rem 0;
 }
 
 .timeline-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding-top: 10vh;
 }
 
 .timeline-track-wrapper {
@@ -95,9 +92,11 @@
 }
 
 .timeline-content {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.02);
   padding: 2rem;
   border-radius: 16px;
   width: 100%;
