@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import KineticText from './KineticText';
 import './JourneySection.css';
 
-const JourneySection = ({ stage }) => {
+const JourneySection = ({ stage, index = 0 }) => {
   const sectionRef = useRef(null);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
   
@@ -16,8 +16,8 @@ const JourneySection = ({ stage }) => {
   const yLeft = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const yRight = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
-  const toggleCard = (index) => {
-    setActiveCardIndex(activeCardIndex === index ? null : index);
+  const toggleCard = (cardIdx) => {
+    setActiveCardIndex(activeCardIndex === cardIdx ? null : cardIdx);
   };
 
   return (
@@ -70,7 +70,12 @@ const JourneySection = ({ stage }) => {
                 <motion.div 
                   key={index}
                   layout
-                  onClick={() => toggleCard(index)}
+                  onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    e.currentTarget.style.setProperty('--ripple-x', `${e.clientX - rect.left}px`);
+                    e.currentTarget.style.setProperty('--ripple-y', `${e.clientY - rect.top}px`);
+                    toggleCard(index);
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false }}
@@ -78,6 +83,19 @@ const JourneySection = ({ stage }) => {
                   className={`journey-info-card ${isActive ? 'active' : ''}`}
                   style={{ cursor: 'pointer' }}
                 >
+                  {/* Liquid Ripple Overlay */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        className="liquid-ripple"
+                        initial={{ scale: 0, opacity: 1 }}
+                        animate={{ scale: 20, opacity: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                      />
+                    )}
+                  </AnimatePresence>
+
                   <motion.div layout className="journey-info-card-title">
                     {item.title}
                   </motion.div>
@@ -90,7 +108,7 @@ const JourneySection = ({ stage }) => {
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.3 }}
                         className="journey-info-card-detail"
-                        style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: '1.5' }}
+                        style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: '1.5', position: 'relative', zIndex: 2 }}
                       >
                         {item.detail}
                       </motion.div>

@@ -63,6 +63,15 @@ function JourneyPage() {
 
   return (
     <div className="app-container" id="home">
+      {/* Hidden SVG for Gooey Filters */}
+      <svg style={{ width: 0, height: 0, position: 'absolute' }}>
+        <filter id="gooey">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="gooey" />
+          <feBlend in="SourceGraphic" in2="gooey" />
+        </filter>
+      </svg>
+
       <motion.div 
         style={{ 
           backgroundColor, 
