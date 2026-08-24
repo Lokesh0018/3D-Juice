@@ -16,7 +16,7 @@ import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
 import Spotlight from './components/Spotlight';
 import ScrollToTop from './components/ScrollToTop';
-import Preloader from './components/Preloader';
+
 import CartDrawer from './components/CartDrawer';
 import OurStory from './components/OurStory';
 import Sustainability from './components/Sustainability';
@@ -42,7 +42,7 @@ import './App.css';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [lenisRef, setLenisRef] = useState(null);
   const currentProduct = products[currentIndex];
@@ -80,13 +80,9 @@ function App() {
 
   useEffect(() => {
     if (lenisRef) {
-      if (loading) {
-        lenisRef.stop();
-      } else {
-        lenisRef.start();
-      }
+      lenisRef.start();
     }
-  }, [loading, lenisRef]);
+  }, [lenisRef]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % products.length);
@@ -108,10 +104,6 @@ function App() {
   return (
     <div className="app-container" id="home">
       
-      <AnimatePresence mode="wait">
-        {loading && <Preloader onComplete={() => setLoading(false)} />}
-      </AnimatePresence>
-
       <CartDrawer 
         isOpen={isCartOpen} 
         onClose={() => setIsCartOpen(false)} 
@@ -124,7 +116,7 @@ function App() {
       <StickyCartBar product={currentProduct} onOpenCart={() => setIsCartOpen(true)} />
       <ScrollToTop color={currentProduct.themeColor} />
       
-      <HeroIntro isLoaded={!loading} />
+      <HeroIntro isLoaded={true} />
 
       <Navbar />
       

@@ -10,7 +10,36 @@ const HeroIntro = ({ isLoaded }) => {
 
   const [bgPhase, setBgPhase] = useState(0);
 
+  const transitionVideoRef = React.useRef(null);
+
   useEffect(() => {
+    // Pre-warm the video to force the browser to buffer it fully
+    if (transitionVideoRef.current) {
+      transitionVideoRef.current.load();
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleInteraction = () => {
+      if (!isLoaded) return;
+      
+      setBgPhase((prevPhase) => {
+        if (prevPhase === 0) {
+          // Play instantly bypassing React's render cycle delay
+          if (transitionVideoRef.current) {
+            transitionVideoRef.current.style.opacity = '1';
+            transitionVideoRef.current.play().catch(e => console.log(e));
+          }
+          const nightVid = document.getElementById('night-video');
+          if (nightVid) nightVid.style.display = 'none';
+
+          document.body.classList.add('theme-day');
+          return 1;
+        }
+        return prevPhase;
+      });
+    };
+
     const handleMouseMove = (e) => {
       if (!isLoaded) return;
       const { clientX, clientY } = e;
@@ -18,17 +47,18 @@ const HeroIntro = ({ isLoaded }) => {
       const y = (clientY / window.innerHeight - 0.5) * 2;
       mouseX.set(x);
       mouseY.set(y);
-
-      setBgPhase((prevPhase) => {
-        if (prevPhase === 0) {
-          document.body.classList.add('theme-day');
-          return 1;
-        }
-        return prevPhase;
-      });
+      handleInteraction();
     };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("wheel", handleInteraction);
+    window.addEventListener("touchstart", handleInteraction);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("wheel", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+    };
   }, [isLoaded]);
 
   useEffect(() => {
@@ -60,44 +90,32 @@ const HeroIntro = ({ isLoaded }) => {
       className="hero-intro-container"
     >
       {bgPhase === 0 && (
-        <img
+        <video
+          id="night-video"
           className="hero-bg-video"
-          src="/mango assets/landing-night.png"
-          alt="Background Fallback"
-          style={{ zIndex: -3 }}
+          src="/mango assets/landing-night.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
       )}
-      <AnimatePresence>
-        {bgPhase === 0 && (
-          <motion.video
-            key="night"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="hero-bg-video"
-            src="/mango assets/landing-night.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        )}
-        {bgPhase === 1 && (
-          <motion.video
-            key="transition"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="hero-bg-video"
-            src="/mango assets/landing-transition.mp4"
-            autoPlay
-            muted
-            playsInline
-            onEnded={() => setBgPhase(2)}
-          />
-        )}
-      </AnimatePresence>
+      
+      <video
+        ref={transitionVideoRef}
+        className="hero-bg-video"
+        src="/mango assets/landing-transition.mp4"
+        muted
+        playsInline
+        preload="auto"
+        onEnded={() => setBgPhase(2)}
+        style={{ 
+          opacity: bgPhase === 1 ? 1 : 0, 
+          pointerEvents: 'none', 
+          zIndex: -2,
+          display: bgPhase < 2 ? 'block' : 'none' 
+        }}
+      />
       <div className="glass-orb" />
 
       <div className="hero-content">
