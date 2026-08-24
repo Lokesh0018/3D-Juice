@@ -29,7 +29,7 @@ const HeroIntro = () => {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#f97316', '#ec4899', '#f59e0b']
+      colors: ['#3b82f6', '#8b5cf6', '#60a5fa']
     });
   };
 
@@ -39,7 +39,7 @@ const HeroIntro = () => {
     >
       <video 
         className="hero-bg-video"
-        src="/assets/Landing.mp4" 
+        src="/mango assets/landing-night.mp4" 
         autoPlay 
         loop 
         muted 

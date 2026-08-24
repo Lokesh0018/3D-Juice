@@ -60,10 +60,10 @@
 }
 
 .order-btn:hover {
-  background: #f97316;
+  background: #3b82f6;
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
 }
 
 .nav-links {
@@ -93,7 +93,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #f97316;
+  background: #3b82f6;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -110,7 +110,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(to right, #f97316, #ec4899);
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
   transform-origin: 0%;
 }
 

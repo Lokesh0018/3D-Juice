@@ -82,7 +82,7 @@ function App() {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#f97316', '#ec4899', '#f59e0b']
+      colors: ['#3b82f6', '#8b5cf6', '#60a5fa']
     });
   };
 
