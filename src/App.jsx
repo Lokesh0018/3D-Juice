@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductBottleScroll from './components/ProductBottleScroll';
 import HeroIntro from './components/HeroIntro';
-import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
 import ParallaxWrapper from './components/ParallaxWrapper';
 import Magnetic from './components/Magnetic';
@@ -31,6 +30,7 @@ import Subscription from './components/Subscription';
 import Founders from './components/Founders';
 import Press from './components/Press';
 import AlphonsoDifference from './components/AlphonsoDifference';
+import WhySpecial from './components/WhySpecial';
 import CommunityImpact from './components/CommunityImpact';
 import IngredientsBreakdown from './components/IngredientsBreakdown';
 import MangoTimeline from './components/MangoTimeline';
@@ -134,14 +134,9 @@ function App() {
           
           <AlphonsoDifference />
 
+          <WhySpecial />
 
-            <div id="flavors">
-              <AlternatingSection alignment="right">
-                <BentoGrid product={currentProduct} />
-              </AlternatingSection>
-            </div>
-
-            <div className="content-sections" id="process">
+          <div className="content-sections" id="process">
               <AlternatingSection alignment="left">
                 <section className="product-details">
                   <div className="text-block">
