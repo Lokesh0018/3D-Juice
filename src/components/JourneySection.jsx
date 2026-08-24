@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import KineticText from './KineticText';
 import './JourneySection.css';
 
 const JourneySection = ({ stage }) => {
@@ -33,8 +34,12 @@ const JourneySection = ({ stage }) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="journey-story-panel"
           >
-            <h2 className="journey-stage-title">{stage.title}</h2>
-            <h3 className="journey-left-title">{stage.leftTitle}</h3>
+            <h2>
+              <KineticText text={stage.title} className="journey-stage-title" />
+            </h2>
+            <h3>
+              <KineticText text={stage.leftTitle} className="journey-left-title" delay={0.2} />
+            </h3>
             <p className="journey-left-desc">{stage.leftDesc}</p>
           </motion.div>
         </div>

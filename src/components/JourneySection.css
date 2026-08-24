@@ -6,7 +6,8 @@
   align-items: center;
   padding: 0 5%;
   z-index: 10;
-  pointer-events: none; /* Let clicks pass through to 3D scene if needed, children re-enable it */
+  pointer-events: none;
+  /* Let clicks pass through to 3D scene if needed, children re-enable it */
 }
 
 .journey-content-wrapper {
@@ -19,7 +20,8 @@
 }
 
 .journey-side {
-  width: 25%; /* Leaves 50% for the center */
+  width: 25%;
+  /* Leaves 50% for the center */
   display: flex;
   flex-direction: column;
   pointer-events: auto;
@@ -38,7 +40,8 @@
 .journey-center {
   width: 50%;
   height: 100%;
-  min-height: 50vh; /* Keep it open */
+  min-height: 50vh;
+  /* Keep it open */
 }
 
 /* Typography and Cards */
@@ -65,7 +68,8 @@
   color: #fff;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  font-family: 'Playfair Display', serif; /* Assuming a serif for premium feel */
+  font-family: 'Playfair Display', serif;
+  /* Assuming a serif for premium feel */
 }
 
 .journey-left-desc {
@@ -106,9 +110,11 @@
   .journey-side {
     width: 30%;
   }
+
   .journey-center {
     width: 40%;
   }
+
   .journey-left-title {
     font-size: 2rem;
   }
@@ -119,11 +125,13 @@
     flex-direction: column;
     justify-content: flex-start;
   }
-  
+
   .journey-center {
     width: 100%;
-    min-height: 40vh; /* Reserve space at the top/center for mobile animation */
-    order: -1; /* Keep animation visual focus first if possible, but actually we just leave space */
+    min-height: 40vh;
+    /* Reserve space at the top/center for mobile animation */
+    order: -1;
+    /* Keep animation visual focus first if possible, but actually we just leave space */
   }
 
   .journey-side {
