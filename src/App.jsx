@@ -5,7 +5,6 @@ import { products } from './data/products';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductBottleScroll from './components/ProductBottleScroll';
-import ProductTextOverlays from './components/ProductTextOverlays';
 import HeroIntro from './components/HeroIntro';
 import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
@@ -19,6 +18,26 @@ import Spotlight from './components/Spotlight';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
 import CartDrawer from './components/CartDrawer';
+import OurStory from './components/OurStory';
+import Sustainability from './components/Sustainability';
+import OrchardOrigins from './components/OrchardOrigins';
+import TasteProfile from './components/TasteProfile';
+import JuiceRecipes from './components/JuiceRecipes';
+import ExtractionProcess from './components/ExtractionProcess';
+import HealthBenefits from './components/HealthBenefits';
+import ServingSuggestions from './components/ServingSuggestions';
+import FarmerPartnerships from './components/FarmerPartnerships';
+import QualityControl from './components/QualityControl';
+import ReserveEdition from './components/ReserveEdition';
+import Subscription from './components/Subscription';
+import Founders from './components/Founders';
+import Press from './components/Press';
+import CommunityImpact from './components/CommunityImpact';
+import BehindScenes from './components/BehindScenes';
+import IngredientsBreakdown from './components/IngredientsBreakdown';
+import MangoTimeline from './components/MangoTimeline';
+import Testimonials from './components/Testimonials';
+import framesManifest from './data/framesManifest.json';
 import './App.css';
 
 function App() {
@@ -104,7 +123,9 @@ function App() {
       <RippleEffect />
       <StickyCartBar product={currentProduct} onOpenCart={() => setIsCartOpen(true)} />
       <ScrollToTop color={currentProduct.themeColor} />
-      <HeroIntro />
+      
+      <HeroIntro isLoaded={!loading} />
+
       <Navbar />
       
       <AnimatePresence mode="wait">
@@ -115,47 +136,46 @@ function App() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-        <div className="scroll-experience">
-          <ProductTextOverlays product={currentProduct} />
-          <ProductBottleScroll product={currentProduct} />
-        </div>
-
+        <ProductBottleScroll product={currentProduct} />
+        
         <div className="content-overlay">
-          <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
+          <section className="section-wrapper">
+            <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
+          </section>
           
-          <div id="difference" className="alphonso-difference section-container">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-block"
-            >
-              <h2 className="section-heading">The Alphonso Difference</h2>
-              <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
-            </motion.div>
+            <div id="difference" className="alphonso-difference section-container">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-block"
+              >
+                <h2 className="section-heading">The Alphonso Difference</h2>
+                <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
+              </motion.div>
 
-            <div className="process-wrapper">
-              <div className="process-line-bg">
-                <motion.div 
-                  className="process-line-fill" 
-                />
-              </div>
-              <div className="process-steps">
-                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                  <h3>01 &mdash; Handpicked</h3>
-                  <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
-                </motion.div>
-                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                  <h3>02 &mdash; Cold Pressed</h3>
-                  <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
-                </motion.div>
-                <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                  <h3>03 &mdash; Bottled Fresh</h3>
-                  <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
-                </motion.div>
+              <div className="process-wrapper">
+                <div className="process-line-bg">
+                  <motion.div 
+                    className="process-line-fill" 
+                  />
+                </div>
+                <div className="process-steps">
+                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                    <h3>01 &mdash; Handpicked</h3>
+                    <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
+                  </motion.div>
+                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                    <h3>02 &mdash; Cold Pressed</h3>
+                    <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
+                  </motion.div>
+                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
+                    <h3>03 &mdash; Bottled Fresh</h3>
+                    <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
+                  </motion.div>
+                </div>
               </div>
             </div>
-          </div>
 
           <ParallaxWrapper>
             <div id="flavors">
@@ -215,17 +235,34 @@ function App() {
             </div>
           </ParallaxWrapper>
 
-
+          <OurStory />
+          <MangoTimeline />
+          <Founders />
+          <OrchardOrigins />
+          <FarmerPartnerships />
+          <TasteProfile />
+          <IngredientsBreakdown />
+          <ExtractionProcess />
+          <BehindScenes />
+          <QualityControl />
+          <Sustainability />
+          <HealthBenefits />
+          <JuiceRecipes />
+          <ServingSuggestions />
+          <CommunityImpact />
+          <Press />
+          <ReserveEdition />
+          <Testimonials />
+          <Subscription />
 
           <div id="faq">
             <FAQ />
           </div>
+          <Footer />
         </div>
 
         </motion.main>
       </AnimatePresence>
-
-      <Footer />
     </div>
   );
 }

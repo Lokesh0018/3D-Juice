@@ -1,0 +1,65 @@
+.orchard-section {
+  padding: 6rem 2rem;
+}
+
+.orchard-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.orchard-intro {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.orchard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.orchard-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3.5rem;
+  border-radius: 24px;
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.orchard-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.orchard-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.orchard-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.orchard-card p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .orchard-grid {
+    grid-template-columns: 1fr;
+  }
+}

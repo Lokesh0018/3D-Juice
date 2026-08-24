@@ -17,7 +17,7 @@
   position: relative;
   background: radial-gradient(circle at 10% 20%, var(--theme-bg-1), transparent 40%),
               radial-gradient(circle at 90% 80%, var(--theme-bg-2), transparent 40%),
-              var(--theme-bg-color);
+              rgba(0, 0, 0, 0.4);
   z-index: 10;
   transition: background 3s ease;
 }

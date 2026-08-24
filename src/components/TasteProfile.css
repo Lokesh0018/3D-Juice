@@ -1,0 +1,73 @@
+.taste-section {
+  padding: 6rem 2rem;
+}
+
+.taste-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.taste-intro {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.taste-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.taste-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 80px 200px 1fr;
+  align-items: center;
+  gap: 2rem;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.taste-card:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.taste-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--theme-primary);
+  opacity: 0.5;
+}
+
+.taste-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.taste-card p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .taste-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,76 @@
+.founders-section {
+  padding: 8rem 2rem;
+}
+
+.founders-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.founders-image-container {
+  width: 100%;
+}
+
+.founders-img-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.5));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.founders-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.founders-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  color: var(--theme-secondary);
+}
+
+.founders-text p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-style: italic;
+  opacity: 0.9;
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.signature {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.signature .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.signature .title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .founders-content {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}

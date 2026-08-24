@@ -1,0 +1,73 @@
+.recipes-section {
+  padding: 6rem 2rem;
+}
+
+.recipes-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.recipe-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.recipe-img {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recipe-img.sorbet {
+  background: linear-gradient(135deg, rgba(255,165,0,0.3), rgba(255,215,0,0.1));
+}
+
+.recipe-img.bowl {
+  background: linear-gradient(135deg, rgba(138,43,226,0.3), rgba(255,20,147,0.1));
+}
+
+.recipe-img.glaze {
+  background: linear-gradient(135deg, rgba(255,69,0,0.3), rgba(178,34,34,0.1));
+}
+
+.recipe-text {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.recipe-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.recipe-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .recipes-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

@@ -4,7 +4,7 @@ import Magnetic from './Magnetic';
 import confetti from 'canvas-confetti';
 import './HeroIntro.css';
 
-const HeroIntro = () => {
+const HeroIntro = ({ isLoaded }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -12,6 +12,7 @@ const HeroIntro = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (!isLoaded) return;
       const { clientX, clientY } = e;
       const x = (clientX / window.innerWidth - 0.5) * 2;
       const y = (clientY / window.innerHeight - 0.5) * 2;
@@ -28,7 +29,18 @@ const HeroIntro = () => {
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isLoaded]);
+
+  useEffect(() => {
+    if (bgPhase < 2) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [bgPhase]);
 
 
 
@@ -44,54 +56,45 @@ const HeroIntro = () => {
   };
 
   return (
-    <section 
+    <section
       className="hero-intro-container"
     >
-      <img 
-        className="hero-bg-video"
-        src={bgPhase === 0 ? "/mango assets/landing-night.png" : "/mango assets/landing-day.png"} 
-        alt="Background Fallback"
-        style={{ zIndex: -3 }}
-      />
+      {bgPhase === 0 && (
+        <img
+          className="hero-bg-video"
+          src="/mango assets/landing-night.png"
+          alt="Background Fallback"
+          style={{ zIndex: -3 }}
+        />
+      )}
       <AnimatePresence>
         {bgPhase === 0 && (
-          <motion.video 
+          <motion.video
             key="night"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className="hero-bg-video"
-            src="/mango assets/landing-night.mp4" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
+            src="/mango assets/landing-night.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         )}
         {bgPhase === 1 && (
-          <motion.video 
+          <motion.video
             key="transition"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className="hero-bg-video"
-            src="/mango assets/landing-transition.mp4" 
-            autoPlay 
-            muted 
+            src="/mango assets/landing-transition.mp4"
+            autoPlay
+            muted
             playsInline
             onEnded={() => setBgPhase(2)}
-          />
-        )}
-        {bgPhase === 2 && (
-          <motion.img 
-            key="day"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="hero-bg-video"
-            src="/mango assets/landing-day.png" 
-            alt="Day Background"
           />
         )}
       </AnimatePresence>
@@ -113,21 +116,21 @@ const HeroIntro = () => {
             </span>
           ))}
         </h1>
-        
+
         <motion.p
-           className="hero-subtitle"
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.8 }}
+          className="hero-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
           Experience the world's most vibrant Alphonso mango juice.
         </motion.p>
 
         <motion.div
-           className="hero-cta-group"
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 1.0 }}
+          className="hero-cta-group"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
         >
           <Magnetic>
             <button onClick={triggerConfetti} className="hero-cta-primary">Shop Mango Juice &rarr;</button>
@@ -137,19 +140,19 @@ const HeroIntro = () => {
           </Magnetic>
         </motion.div>
 
-        <motion.div 
-           className="hero-social-proof"
-           initial={{ opacity: 0, scale: 0.9 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.8, delay: 1.2 }}
+        <motion.div
+          className="hero-social-proof"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
         >
-           <span className="premium-badge">✦ 100% Organic</span>
-           <span className="premium-badge">🌱 No Added Sugar</span>
-           <span className="premium-badge">🥭 Cold-Pressed</span>
+          <span className="premium-badge">✦ 100% Organic</span>
+          <span className="premium-badge">🌱 No Added Sugar</span>
+          <span className="premium-badge">🥭 Cold-Pressed</span>
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="glowing-scroll-line"
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: 80, opacity: 1 }}

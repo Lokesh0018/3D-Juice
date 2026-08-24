@@ -1,0 +1,68 @@
+.farmer-section {
+  padding: 8rem 2rem;
+}
+
+.farmer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.farmer-intro {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.farmer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.farmer-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(34,139,34,0.2), rgba(0,100,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.farmer-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.farmer-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.farmer-text-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.farmer-text-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .farmer-grid {
+    grid-template-columns: 1fr;
+  }
+}

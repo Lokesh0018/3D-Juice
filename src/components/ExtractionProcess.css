@@ -1,0 +1,74 @@
+.extraction-section {
+  padding: 6rem 2rem;
+}
+
+.extraction-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.extraction-intro {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.extraction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.extract-step {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 24px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.extract-step:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.extract-step.full-width {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.extract-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--theme-primary);
+  opacity: 0.3;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+.extract-step h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.extract-step p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .extraction-grid {
+    grid-template-columns: 1fr;
+  }
+}
