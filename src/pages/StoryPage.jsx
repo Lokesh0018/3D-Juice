@@ -1,15 +1,27 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import PageHeader from '../components/PageHeader';
+import OurStory from '../components/OurStory';
+import Founders from '../components/Founders';
+import Footer from '../components/Footer';
 import '../App.css';
 
-const StoryPage = () => (
-  <div className="app-container" style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: '#fff', paddingTop: '100px' }}>
-    <Navbar />
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
-      <h1 style={{ color: 'var(--theme-primary, #F5A623)', fontSize: '3rem', marginBottom: '2rem' }}>Story Page</h1>
-      <p>Placeholder content for Story.</p>
+const StoryPage = () => {
+  return (
+    <div className="app-container" style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: '#fff' }}>
+      <Navbar />
+      <PageHeader 
+        title="Our Story" 
+        subtitle="A journey of passion, dedication, and the relentless pursuit of the perfect mango." 
+      />
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
+        <OurStory />
+        <div style={{ margin: '8rem 0' }}></div>
+        <Founders />
+      </div>
+      <Footer />
     </div>
-  </div>
-);
+  );
+};
 
 export default StoryPage;

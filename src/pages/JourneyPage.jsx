@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import Lenis from 'lenis';
 import { products } from '../data/products';
 import Navbar from '../components/Navbar';
 import ProductBottleScroll from '../components/ProductBottleScroll';
 import HeroIntro from '../components/HeroIntro';
-import StickyCartBar from '../components/StickyCartBar';
 import ScrollToTop from '../components/ScrollToTop';
-import CartDrawer from '../components/CartDrawer';
 import JourneySection from '../components/JourneySection';
+import JourneyProgress from '../components/JourneyProgress';
+import AnimationScrubber from '../components/AnimationScrubber';
 import { journeyStages } from '../data/journeyStages';
 import '../App.css'; // Using the global App.css for now
 
 function JourneyPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [lenisRef, setLenisRef] = useState(null);
   const currentProduct = products[currentIndex];
 
@@ -56,16 +54,32 @@ function JourneyPage() {
     }
   }, [lenisRef]);
 
+  const { scrollYProgress } = useScroll();
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6, 1],
+    ['#0a0f0a', '#1a1f10', '#1f1a0d', '#1a130a'] // Earthy green to warm yellow/gold
+  );
+
   return (
     <div className="app-container" id="home">
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        product={currentProduct}
-        themeColor={currentProduct.themeColor}
+      <motion.div 
+        style={{ 
+          backgroundColor, 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          width: '100%', 
+          height: '100%', 
+          zIndex: -10,
+          pointerEvents: 'none'
+        }} 
       />
+      
+      <JourneyProgress stages={journeyStages} lenisRef={lenisRef} />
+      <AnimationScrubber lenisRef={lenisRef} />
+      
       <div className="noise-overlay" />
-      <StickyCartBar product={currentProduct} onOpenCart={() => setIsCartOpen(true)} />
       <ScrollToTop color={currentProduct.themeColor} />
 
       <HeroIntro isLoaded={true} />
