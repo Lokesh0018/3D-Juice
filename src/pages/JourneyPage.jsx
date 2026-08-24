@@ -9,6 +9,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import JourneySection from '../components/JourneySection';
 import JourneyProgress from '../components/JourneyProgress';
 import AnimationScrubber from '../components/AnimationScrubber';
+import Footer from '../components/Footer';
 import { journeyStages } from '../data/journeyStages';
 import '../App.css'; // Using the global App.css for now
 
@@ -103,22 +104,29 @@ function JourneyPage() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <ProductBottleScroll product={currentProduct} />
-
-          <div className="content-overlay">
-            <div style={{ height: '100vh' }}>
-              {/* This is the initial landing page section height, pushing the journey down */}
+          <div style={{ position: 'relative' }}>
+            {/* Sticky container for the bottle canvas */}
+            <div style={{ position: 'sticky', top: 0, height: '100vh', zIndex: 0 }}>
+              <ProductBottleScroll product={currentProduct} />
             </div>
-            
-            {journeyStages.map((stage, index) => (
-              <JourneySection key={stage.id} stage={stage} index={index} />
-            ))}
-            
-            {/* Added extra scroll padding at the bottom if necessary */}
-            <div style={{ height: '50vh' }}></div>
+
+            <div className="content-overlay" style={{ marginTop: '-100vh', position: 'relative', zIndex: 1 }}>
+              <div style={{ height: '100vh' }}>
+                {/* This is the initial landing page section height, pushing the journey down */}
+              </div>
+              
+              {journeyStages.map((stage, index) => (
+                <JourneySection key={stage.id} stage={stage} index={index} />
+              ))}
+              
+              {/* Added extra scroll padding at the bottom if necessary */}
+              <div style={{ height: '20vh' }}></div>
+            </div>
           </div>
         </motion.main>
       </AnimatePresence>
+
+      <Footer />
     </div>
   );
 }
