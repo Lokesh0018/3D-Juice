@@ -1,0 +1,139 @@
+.journey-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through to 3D scene if needed, children re-enable it */
+}
+
+.journey-content-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.journey-side {
+  width: 25%; /* Leaves 50% for the center */
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.journey-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.journey-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.journey-center {
+  width: 50%;
+  height: 100%;
+  min-height: 50vh; /* Keep it open */
+}
+
+/* Typography and Cards */
+.journey-story-panel {
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.journey-stage-title {
+  font-size: 1.2rem;
+  color: var(--theme-primary, #F5A623);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.journey-left-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-family: 'Playfair Display', serif; /* Assuming a serif for premium feel */
+}
+
+.journey-left-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.journey-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.journey-info-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.journey-info-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--theme-primary, #F5A623);
+  transform: translateX(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .journey-side {
+    width: 30%;
+  }
+  .journey-center {
+    width: 40%;
+  }
+  .journey-left-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .journey-content-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .journey-center {
+    width: 100%;
+    min-height: 40vh; /* Reserve space at the top/center for mobile animation */
+    order: -1; /* Keep animation visual focus first if possible, but actually we just leave space */
+  }
+
+  .journey-side {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .journey-story-panel {
+    padding: 1.5rem;
+  }
+}

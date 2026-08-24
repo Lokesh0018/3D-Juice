@@ -16,17 +16,17 @@ const ProductBottleScroll = ({ product }) => {
 
   useEffect(() => {
     if (totalFrames === 0) return;
-    
+
     // Initialize the array
     imagesRef.current = new Array(totalFrames).fill(null);
-    
+
     // Load first frame immediately
     const firstImg = new Image();
     firstImg.src = manifest[0];
     firstImg.onload = () => {
       imagesRef.current[0] = firstImg;
       setIsReady(true);
-      
+
       // Load remaining frames asynchronously so we don't block the initial render
       for (let i = 1; i < totalFrames; i++) {
         const img = new Image();
@@ -40,41 +40,41 @@ const ProductBottleScroll = ({ product }) => {
 
   useEffect(() => {
     if (!isReady) return;
-    
+
     const renderFrame = (index) => {
       if (!canvasRef.current) return;
-      
+
       const ctx = canvasRef.current.getContext('2d');
       if (!ctx) return;
-      
+
       // Find the closest loaded image if the requested one is not loaded yet
       let drawIndex = index;
       while (drawIndex >= 0 && !imagesRef.current[drawIndex]) {
         drawIndex--;
       }
-      
+
       if (drawIndex < 0) return;
-      
+
       const img = imagesRef.current[drawIndex];
       const canvas = canvasRef.current;
-      
+
       // Keep canvas resolution high
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      
+
       // Calculate object-fit: cover logic
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
       const ratio = Math.max(hRatio, vRatio);
-      
+
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
-      const centerShift_y = (canvas.height - img.height * ratio) / 2;  
-      
+      const centerShift_y = (canvas.height - img.height * ratio) / 2;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(
-         img, 
-         0, 0, img.width, img.height,
-         centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
+        img,
+        0, 0, img.width, img.height,
+        centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
       );
     };
 
