@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import Magnetic from './Magnetic';
 import confetti from 'canvas-confetti';
 import './HeroIntro.css';
@@ -8,6 +8,8 @@ const HeroIntro = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  const [bgPhase, setBgPhase] = useState(0);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
@@ -15,6 +17,14 @@ const HeroIntro = () => {
       const y = (clientY / window.innerHeight - 0.5) * 2;
       mouseX.set(x);
       mouseY.set(y);
+
+      setBgPhase((prevPhase) => {
+        if (prevPhase === 0) {
+          document.body.classList.add('theme-day');
+          return 1;
+        }
+        return prevPhase;
+      });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -37,14 +47,54 @@ const HeroIntro = () => {
     <section 
       className="hero-intro-container"
     >
-      <video 
+      <img 
         className="hero-bg-video"
-        src="/mango assets/landing-night.mp4" 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
+        src={bgPhase === 0 ? "/mango assets/landing-night.png" : "/mango assets/landing-day.png"} 
+        alt="Background Fallback"
+        style={{ zIndex: -3 }}
       />
+      <AnimatePresence>
+        {bgPhase === 0 && (
+          <motion.video 
+            key="night"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="hero-bg-video"
+            src="/mango assets/landing-night.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+          />
+        )}
+        {bgPhase === 1 && (
+          <motion.video 
+            key="transition"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="hero-bg-video"
+            src="/mango assets/landing-transition.mp4" 
+            autoPlay 
+            muted 
+            playsInline
+            onEnded={() => setBgPhase(2)}
+          />
+        )}
+        {bgPhase === 2 && (
+          <motion.img 
+            key="day"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="hero-bg-video"
+            src="/mango assets/landing-day.png" 
+            alt="Day Background"
+          />
+        )}
+      </AnimatePresence>
       <div className="glass-orb" />
 
       <div className="hero-content">

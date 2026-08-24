@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="logo-area">
           <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10 5.52 0 10-4.48 10-10 0-5.52-4.48-10-10-10zm-1 14.5v-5H8.5L13 7v5h2.5L11 16.5z" fill="#3b82f6"/>
+             <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10 5.52 0 10-4.48 10-10 0-5.52-4.48-10-10-10zm-1 14.5v-5H8.5L13 7v5h2.5L11 16.5z" style={{ fill: 'var(--theme-primary)', transition: 'fill 3s ease' }}/>
           </svg>
           <span className="logo-text">Alphonso Mango</span>
         </div>

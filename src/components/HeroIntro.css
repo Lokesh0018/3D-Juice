@@ -82,7 +82,7 @@
 }
 
 .gradient-text-liquid {
-  background: linear-gradient(120deg, #fff, #8b5cf6, #3b82f6, #fff);
+  background: linear-gradient(120deg, #fff, var(--theme-secondary), var(--theme-primary), #fff);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -172,8 +172,9 @@
   position: absolute;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
-  box-shadow: 0 0 10px #3b82f6;
+  background: linear-gradient(to bottom, transparent, var(--theme-primary), transparent);
+  box-shadow: 0 0 10px var(--theme-primary);
+  transition: background 3s ease, box-shadow 3s ease;
 }
 
 @media (max-width: 768px) {
