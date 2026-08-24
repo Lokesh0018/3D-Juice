@@ -40,14 +40,16 @@
 .taste-card:hover {
   transform: translateX(10px);
   background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(255, 158, 34, 0.15);
 }
 
 .taste-number {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: var(--theme-primary);
-  opacity: 0.5;
+  background: linear-gradient(135deg, #ff9e22, #ff5e00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .taste-card h3 {

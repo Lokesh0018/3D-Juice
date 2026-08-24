@@ -72,10 +72,10 @@
 }
 
 /* Distribute items vertically using top % */
-.timeline-item:nth-child(1) { top: 10%; }
-.timeline-item:nth-child(2) { top: 35%; }
-.timeline-item:nth-child(3) { top: 60%; }
-.timeline-item:nth-child(4) { top: 85%; }
+.timeline-item:nth-child(1) { top: 0%; }
+.timeline-item:nth-child(2) { top: 22%; }
+.timeline-item:nth-child(3) { top: 44%; }
+.timeline-item:nth-child(4) { top: 66%; }
 
 .timeline-dot {
   position: absolute;

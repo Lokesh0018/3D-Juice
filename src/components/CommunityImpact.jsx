@@ -44,7 +44,11 @@ const CommunityImpact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="impact-img-placeholder"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1577894541703-0c4664da0471?q=80&w=1000&auto=format&fit=crop" 
+            alt="Community Impact" 
+            className="impact-img" 
+          />
         </motion.div>
       </div>
     </section>

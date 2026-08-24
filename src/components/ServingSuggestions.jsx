@@ -27,7 +27,7 @@ const ServingSuggestions = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="serve-image-placeholder ice"></div>
+            <div className="serve-img ice"></div>
             <h3>On The Rocks</h3>
             <p>Serve chilled over a single large ice cube. Allow the chill to unlock the vibrant top notes of the Alphonso.</p>
           </motion.div>
@@ -39,7 +39,7 @@ const ServingSuggestions = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="serve-image-placeholder cocktail"></div>
+            <div className="serve-img cocktail"></div>
             <h3>Premium Mixer</h3>
             <p>The perfect companion for white rum or premium vodka, creating an unparalleled tropical cocktail experience.</p>
           </motion.div>
@@ -51,7 +51,7 @@ const ServingSuggestions = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <div className="serve-image-placeholder smoothie"></div>
+            <div className="serve-img smoothie"></div>
             <h3>Morning Blend</h3>
             <p>Blend with Greek yogurt, chia seeds, and a splash of coconut water for a luxurious, nutrient-dense breakfast.</p>
           </motion.div>
