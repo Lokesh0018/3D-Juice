@@ -1,0 +1,41 @@
+.alternating-wrapper {
+  width: 100%;
+  display: flex;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  /* Ensure the row doesn't collapse */
+  min-height: 40vh;
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+.alternating-content {
+  /* Restrict width to keep center entirely clear */
+  max-width: 40%;
+  width: 100%;
+  /* Optional: we can add flex to make content fill normally */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .alternating-content {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .alternating-content {
+    max-width: 100%; /* On very small screens, strict left/right might be impossible, but let's stick to user intent as much as possible, maybe max-width: 80% */
+  }
+  
+  .align-left, .align-right {
+    padding: 2rem 1rem;
+  }
+}

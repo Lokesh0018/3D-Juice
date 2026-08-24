@@ -3,14 +3,17 @@
 }
 
 .recipes-content {
-  max-width: 1200px;
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 4rem;
   margin: 0 auto;
 }
 
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem 20rem;
+  width: 100%;
 }
 
 .recipe-card {
@@ -64,10 +67,15 @@
   opacity: 0.85;
 }
 
+@media (max-width: 1200px) {
+  .recipes-grid {
+    gap: 4rem 10rem;
+  }
+}
+
 @media (max-width: 900px) {
   .recipes-grid {
     grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
+    gap: 4rem;
   }
 }

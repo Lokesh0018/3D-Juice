@@ -10,11 +10,9 @@ import BentoGrid from './components/BentoGrid';
 import MarqueeText from './components/MarqueeText';
 import ParallaxWrapper from './components/ParallaxWrapper';
 import Magnetic from './components/Magnetic';
-import RippleEffect from './components/RippleEffect';
 import confetti from 'canvas-confetti';
 import FAQ from './components/FAQ';
 import StickyCartBar from './components/StickyCartBar';
-import Spotlight from './components/Spotlight';
 import ScrollToTop from './components/ScrollToTop';
 
 import CartDrawer from './components/CartDrawer';
@@ -32,11 +30,12 @@ import ReserveEdition from './components/ReserveEdition';
 import Subscription from './components/Subscription';
 import Founders from './components/Founders';
 import Press from './components/Press';
+import AlphonsoDifference from './components/AlphonsoDifference';
 import CommunityImpact from './components/CommunityImpact';
-import BehindScenes from './components/BehindScenes';
 import IngredientsBreakdown from './components/IngredientsBreakdown';
 import MangoTimeline from './components/MangoTimeline';
 import Testimonials from './components/Testimonials';
+import AlternatingSection, { childVariants } from './components/AlternatingSection';
 import framesManifest from './data/framesManifest.json';
 import './App.css';
 
@@ -111,8 +110,6 @@ function App() {
         themeColor={currentProduct.themeColor} 
       />
       <div className="noise-overlay" />
-      <Spotlight />
-      <RippleEffect />
       <StickyCartBar product={currentProduct} onOpenCart={() => setIsCartOpen(true)} />
       <ScrollToTop color={currentProduct.themeColor} />
       
@@ -135,121 +132,80 @@ function App() {
             <MarqueeText text={currentProduct.features.join(' • ') + ' • 100% ORGANIC'} />
           </section>
           
-            <div id="difference" className="alphonso-difference section-container">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-block"
-              >
-                <h2 className="section-heading">The Alphonso Difference</h2>
-                <p className="section-subheading">Made from India's finest Alphonso mangoes, cold-pressed to preserve their naturally rich flavor.</p>
-              </motion.div>
+          <AlphonsoDifference />
 
-              <div className="process-wrapper">
-                <div className="process-line-bg">
-                  <motion.div 
-                    className="process-line-fill" 
-                  />
-                </div>
-                <div className="process-steps">
-                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                    <h3>01 &mdash; Handpicked</h3>
-                    <p>Only the ripest, golden fruits are selected from our heritage orchards.</p>
-                  </motion.div>
-                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                    <h3>02 &mdash; Cold Pressed</h3>
-                    <p>Gentle extraction preserves the vibrant color and vital nutrients.</p>
-                  </motion.div>
-                  <motion.div className="step-card" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-10%" }}>
-                    <h3>03 &mdash; Bottled Fresh</h3>
-                    <p>Sealed instantly to lock in the flavor of a perfectly ripe mango.</p>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
 
-          <ParallaxWrapper>
             <div id="flavors">
-              <BentoGrid product={currentProduct} />
+              <AlternatingSection alignment="right">
+                <BentoGrid product={currentProduct} />
+              </AlternatingSection>
             </div>
 
             <div className="content-sections" id="process">
-              <section className="product-details section-container">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="text-block"
-                >
-                    <h2>{currentProduct.detailsSection.title}</h2>
-                    <p>{currentProduct.detailsSection.description}</p>
-                </motion.div>
-              </section>
+              <AlternatingSection alignment="left">
+                <section className="product-details">
+                  <div className="text-block">
+                      <h2>{currentProduct.detailsSection.title}</h2>
+                      <p>{currentProduct.detailsSection.description}</p>
+                  </div>
+                </section>
+              </AlternatingSection>
 
-              <section className="product-freshness section-container">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8 }}
-                  className="text-block"
-                >
-                  <h2>{currentProduct.freshnessSection.title}</h2>
-                  <p>{currentProduct.freshnessSection.description}</p>
-                </motion.div>
-              </section>
+              <AlternatingSection alignment="right">
+                <section className="product-freshness">
+                  <div className="text-block">
+                    <h2>{currentProduct.freshnessSection.title}</h2>
+                    <p>{currentProduct.freshnessSection.description}</p>
+                  </div>
+                </section>
+              </AlternatingSection>
 
-              <section className="buy-now-section section-container">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6 }}
-                  className="buy-card"
-                >
-                    <div className="buy-info">
-                      <h2>{currentProduct.name}</h2>
-                      <p className="price-tag">{currentProduct.buyNowSection.price} <span>{currentProduct.buyNowSection.unit}</span></p>
-                      <ul className="params-list">
-                        {currentProduct.buyNowSection.processingParams.map(p => <li key={p}>{p}</li>)}
-                      </ul>
-                      <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
-                    </div>
-                    <Magnetic>
-                      <button onClick={() => setIsCartOpen(true)} className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
-                        Order Now
-                      </button>
-                    </Magnetic>
-                </motion.div>
-              </section>
+              <AlternatingSection alignment="left">
+                <section className="buy-now-section">
+                  <div className="buy-card">
+                      <div className="buy-info">
+                        <h2>{currentProduct.name}</h2>
+                        <p className="price-tag">{currentProduct.buyNowSection.price} <span>{currentProduct.buyNowSection.unit}</span></p>
+                        <ul className="params-list">
+                          {currentProduct.buyNowSection.processingParams.map(p => <li key={p}>{p}</li>)}
+                        </ul>
+                        <p className="delivery">{currentProduct.buyNowSection.deliveryPromise}</p>
+                      </div>
+                      <Magnetic>
+                        <button onClick={() => setIsCartOpen(true)} className="add-to-cart-btn" style={{ color: currentProduct.themeColor }}>
+                          Order Now
+                        </button>
+                      </Magnetic>
+                  </div>
+                </section>
+              </AlternatingSection>
             </div>
-          </ParallaxWrapper>
 
-          <OurStory />
-          <MangoTimeline />
-          <Founders />
-          <OrchardOrigins />
-          <FarmerPartnerships />
-          <TasteProfile />
-          <IngredientsBreakdown />
-          <ExtractionProcess />
-          <BehindScenes />
-          <QualityControl />
-          <Sustainability />
-          <HealthBenefits />
-          <JuiceRecipes />
-          <ServingSuggestions />
-          <CommunityImpact />
-          <Press />
-          <ReserveEdition />
-          <Testimonials />
-          <Subscription />
 
-          <div id="faq">
-            <FAQ />
-          </div>
+          <AlternatingSection alignment="right"><OurStory /></AlternatingSection>
+          <AlternatingSection alignment="left"><MangoTimeline /></AlternatingSection>
+          <AlternatingSection alignment="right"><Founders /></AlternatingSection>
+          <AlternatingSection alignment="left"><OrchardOrigins /></AlternatingSection>
+          <AlternatingSection alignment="right"><FarmerPartnerships /></AlternatingSection>
+          <AlternatingSection alignment="left"><TasteProfile /></AlternatingSection>
+          <AlternatingSection alignment="right"><IngredientsBreakdown /></AlternatingSection>
+          <AlternatingSection alignment="left"><ExtractionProcess /></AlternatingSection>
+          <AlternatingSection alignment="right"><QualityControl /></AlternatingSection>
+          <AlternatingSection alignment="left"><Sustainability /></AlternatingSection>
+          <AlternatingSection alignment="right"><HealthBenefits /></AlternatingSection>
+          <AlternatingSection alignment="left"><JuiceRecipes /></AlternatingSection>
+          <AlternatingSection alignment="right"><ServingSuggestions /></AlternatingSection>
+          <AlternatingSection alignment="left"><CommunityImpact /></AlternatingSection>
+          <AlternatingSection alignment="right"><Press /></AlternatingSection>
+          <AlternatingSection alignment="left"><ReserveEdition /></AlternatingSection>
+          <AlternatingSection alignment="right"><Testimonials /></AlternatingSection>
+          <AlternatingSection alignment="left"><Subscription /></AlternatingSection>
+
+          <AlternatingSection alignment="left">
+            <div id="faq">
+              <FAQ />
+            </div>
+          </AlternatingSection>
           <Footer />
         </div>
 

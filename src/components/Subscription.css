@@ -3,9 +3,12 @@
 }
 
 .subscription-content {
-  max-width: 800px;
+  max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .subscription-text-block {
@@ -14,7 +17,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 4rem 3rem;
   border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  text-align: center;
 }
 
 .subscription-intro {

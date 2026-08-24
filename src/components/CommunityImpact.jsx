@@ -4,14 +4,14 @@ import './CommunityImpact.css';
 
 const CommunityImpact = () => {
   return (
-    <section className="impact-section section-container">
+    <section className="impact-section ">
       <div className="impact-content">
-        <motion.div 
+        <div 
           className="impact-text"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+         
+         
+         
+         
         >
           <h2 className="section-heading">Empowering Ratnagiri</h2>
           <p>
@@ -35,21 +35,21 @@ const CommunityImpact = () => {
               <span className="stat-label">Farming Families Supported</span>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
+        <div 
           className="impact-image"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+         
+         
+         
+         
         >
           <img 
             src="https://images.unsplash.com/photo-1577894541703-0c4664da0471?q=80&w=1000&auto=format&fit=crop" 
             alt="Community Impact" 
             className="impact-img" 
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

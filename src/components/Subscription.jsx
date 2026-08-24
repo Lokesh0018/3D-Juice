@@ -5,14 +5,14 @@ import './Subscription.css';
 
 const Subscription = () => {
   return (
-    <section className="subscription-section section-container">
+    <section className="subscription-section ">
       <div className="subscription-content">
-        <motion.div 
+        <div 
           className="subscription-text-block"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.8 }}
+         
+         
+         
+         
         >
           <h2 className="section-heading">The Alphonso Club</h2>
           <p className="subscription-intro">
@@ -28,7 +28,7 @@ const Subscription = () => {
           <Magnetic>
             <button className="subscribe-btn">Subscribe & Save</button>
           </Magnetic>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

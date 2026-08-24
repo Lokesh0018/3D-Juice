@@ -3,25 +3,31 @@
 }
 
 .orchard-content {
-  max-width: 1000px;
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 4rem;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .orchard-intro {
   font-size: 1.4rem;
   line-height: 1.8;
   opacity: 0.9;
-  max-width: 800px;
-  margin: 0 auto;
+}
+
+.orchard-content .text-block {
+  max-width: 450px;
+  text-align: left;
 }
 
 .orchard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 500px;
 }
 
 .orchard-card {
@@ -42,7 +48,7 @@
 .orchard-icon {
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
-  text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .orchard-card h3 {
@@ -58,8 +64,17 @@
   opacity: 0.85;
 }
 
+@media (max-width: 1024px) {
+  .orchard-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
+    padding: 0 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .orchard-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }

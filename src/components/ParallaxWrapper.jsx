@@ -28,16 +28,7 @@ const ParallaxWrapper = ({ children }) => {
 
   return (
     <div ref={ref} className="parallax-container">
-      <motion.img src="/assets/slice1.png" className="parallax-img shape-1" style={{ y: y1, rotate: rotate1 }} alt="" />
-      <motion.img src="/assets/leaf.png" className="parallax-img shape-2" style={{ y: y2, rotate: rotate2 }} alt="" />
-      <motion.img src="/assets/splash.png" className="parallax-img shape-3" style={{ y: y3, rotate: rotate3 }} alt="" />
-      <motion.img src="/assets/slice2.png" className="parallax-img shape-4" style={{ y: y4, rotate: rotate4 }} alt="" />
-      
-      {/* Additional reused instances */}
-      <motion.img src="/assets/slice1.png" className="parallax-img shape-5" style={{ y: y5, rotate: rotate5 }} alt="" />
-      <motion.img src="/assets/leaf.png" className="parallax-img shape-6" style={{ y: y6, rotate: rotate6 }} alt="" />
-      <motion.img src="/assets/splash.png" className="parallax-img shape-7" style={{ y: y7, rotate: rotate1 }} alt="" />
-      <motion.img src="/assets/slice2.png" className="parallax-img shape-8" style={{ y: y8, rotate: rotate2 }} alt="" />
+
       
       {children}
     </div>

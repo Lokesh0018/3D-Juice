@@ -13,13 +13,13 @@ const FAQ = () => {
 
   return (
     <section className="faq-section">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+      <h2
+       
+       
+       
       >
         Frequently Asked Questions
-      </motion.h2>
+      </h2>
       <div className="faq-list">
         {faqs.map((faq, idx) => (
           <div 

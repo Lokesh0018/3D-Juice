@@ -5,14 +5,14 @@ import './ReserveEdition.css';
 
 const ReserveEdition = () => {
   return (
-    <section className="reserve-section section-container">
+    <section className="reserve-section ">
       <div className="reserve-content">
-        <motion.div 
+        <div 
           className="reserve-text-block"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.8 }}
+         
+         
+         
+         
         >
           <div className="badge">Coming Soon</div>
           <h2 className="section-heading">The First Harvest Reserve</h2>
@@ -24,7 +24,7 @@ const ReserveEdition = () => {
           <Magnetic>
             <button className="notify-btn">Join the Waitlist</button>
           </Magnetic>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

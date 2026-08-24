@@ -4,25 +4,25 @@ import './Founders.css';
 
 const Founders = () => {
   return (
-    <section className="founders-section section-container">
+    <section className="founders-section ">
       <div className="founders-content">
-        <motion.div 
+        <div 
           className="founders-image-container"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+         
+         
+         
+         
         >
           {/* Placeholder for founders image */}
           <div className="founders-img-placeholder"></div>
-        </motion.div>
+        </div>
 
-        <motion.div 
+        <div 
           className="founders-text"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+         
+         
+         
+         
         >
           <h2 className="section-heading">The Founders' Vision</h2>
           <h3 className="founders-subtitle">A relentless pursuit of perfection.</h3>
@@ -36,7 +36,7 @@ const Founders = () => {
             <span className="name">Arjun & Maya</span>
             <span className="title">Founders, The Alphonso Reserve</span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
