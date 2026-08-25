@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader';
 import ExtractionProcess from '../components/ExtractionProcess';
 import MangoTimeline from '../components/MangoTimeline';
 import Footer from '../components/Footer';
+import CinematicBackground from '../components/CinematicBackground';
 import '../App.css';
 import './ProcessPage.css';
 
@@ -35,6 +36,7 @@ const ProcessPage = () => {
 
   return (
     <div className="process-page-wrapper">
+      <CinematicBackground />
       <Navbar />
       <PageHeader 
         title="The Process" 

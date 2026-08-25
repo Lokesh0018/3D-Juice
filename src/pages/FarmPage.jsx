@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader';
 import OrchardOrigins from '../components/OrchardOrigins';
 import FarmerPartnerships from '../components/FarmerPartnerships';
 import Footer from '../components/Footer';
+import CinematicBackground from '../components/CinematicBackground';
 import '../App.css';
 import './FarmPage.css';
 
@@ -35,6 +36,7 @@ const FarmPage = () => {
 
   return (
     <div className="farm-page-wrapper">
+      <CinematicBackground />
       <Navbar />
       <PageHeader 
         title="Our Farm" 

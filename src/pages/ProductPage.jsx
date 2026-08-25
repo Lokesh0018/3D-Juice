@@ -6,6 +6,7 @@ import TasteProfile from '../components/TasteProfile';
 import IngredientsBreakdown from '../components/IngredientsBreakdown';
 import HealthBenefits from '../components/HealthBenefits';
 import Footer from '../components/Footer';
+import CinematicBackground from '../components/CinematicBackground';
 import '../App.css';
 import './ProductPage.css';
 
@@ -35,6 +36,7 @@ const ProductPage = () => {
 
   return (
     <div className="product-page-wrapper">
+      <CinematicBackground />
       <Navbar />
       <PageHeader 
         title="Our Product" 

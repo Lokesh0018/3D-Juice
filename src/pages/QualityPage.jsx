@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import PageHeader from '../components/PageHeader';
 import QualityControl from '../components/QualityControl';
 import Footer from '../components/Footer';
+import CinematicBackground from '../components/CinematicBackground';
 import '../App.css';
 import './QualityPage.css';
 
@@ -34,6 +35,7 @@ const QualityPage = () => {
 
   return (
     <div className="quality-page-wrapper">
+      <CinematicBackground />
       <Navbar />
       <PageHeader 
         title="Quality & Sustainability" 
