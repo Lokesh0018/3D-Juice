@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollRestoration from './components/ScrollRestoration';
 
 const JourneyPage = React.lazy(() => import('./pages/JourneyPage'));
 const FarmPage = React.lazy(() => import('./pages/FarmPage'));
@@ -19,8 +20,10 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
+    <>
+      <ScrollRestoration />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/" element={<JourneyPage />} />
         <Route path="/journey" element={<JourneyPage />} />
         <Route path="/farm" element={<FarmPage />} />
@@ -30,7 +33,8 @@ function App() {
         <Route path="/product" element={<ProductPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
-    </Suspense>
+      </Suspense>
+    </>
   );
 }
 

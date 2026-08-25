@@ -17,15 +17,24 @@
 }
 
 .quality-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.02);
   padding: 3rem 2rem;
-  border-radius: 20px;
+  border-radius: 24px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+}
+
+.quality-card:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 .quality-card::before {
@@ -42,9 +51,10 @@
 }
 
 .quality-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-12px) scale(1.02);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(245, 166, 35, 0.1), inset 0 0 30px rgba(255,255,255,0.05);
 }
 
 .quality-card:hover::before {

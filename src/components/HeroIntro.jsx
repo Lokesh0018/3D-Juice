@@ -116,6 +116,14 @@ const HeroIntro = ({ isLoaded }) => {
           display: bgPhase < 2 ? 'block' : 'none' 
         }}
       />
+      {bgPhase >= 2 && (
+        <img
+          className="hero-bg-video"
+          src="/mango assets/landing-day.png"
+          alt="Sunny Mango Farm"
+          style={{ objectFit: 'cover', zIndex: -3 }}
+        />
+      )}
       <div className="glass-orb" />
 
       <div className="hero-content">
