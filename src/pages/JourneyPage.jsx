@@ -59,7 +59,7 @@ function JourneyPage() {
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 1],
-    ['#0a0f0a', '#1a1f10', '#1f1a0d', '#1a130a'] // Earthy green to warm yellow/gold
+    ['#141c14', '#202613', '#262010', '#20160a'] // Earthy green to warm yellow/gold
   );
 
   return (
